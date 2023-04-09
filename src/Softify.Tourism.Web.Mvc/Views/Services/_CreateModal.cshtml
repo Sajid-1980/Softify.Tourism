@@ -1,0 +1,328 @@
+﻿@using Softify.Tourism.Web.Models.Common.Modals
+@model Softify.Tourism.Web.Models.Services.ServiceListViewModel
+
+@{
+    Layout = null;
+}
+<div class="modal fade" id="ServiceCreateModal" tabindex="-1" role="dialog" aria-labelledby="ServiceCreateModalLabel" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            @await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateNewService")))
+
+            <form name="serviceCreateForm" role="form" class="form-horizontal">
+                <div class="modal-body">
+                    <div class="form-group row required">
+                        <label class="col-md-2 col-form-label" for="name">@L("Name")</label>
+                        <div class="col-md-4">
+                            <input id="name" type="text" name="Name" class="form-control" required maxlength="32" minlength="2">
+                        </div>
+                        <label class="col-md-2 col-form-label" for="servicetype">@L("ServiceType")</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="filterByType" type="text" onchange="searchFilter()" name="ServiceType">
+                                <option value="" selected>--- Select Service Type ---</option>
+                                <option value="cars">Cars</option>
+                                <option value="hotels">Hotels</option>
+                                <option value="packages">Packages</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="col hotels">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="livingarea">@L("LivingArea")</label>
+                            <div class="col-md-4">
+                                <input id="livingarea" type="text" name="LivingArea" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="address">@L("Address")</label>
+                            <div class="col-md-4">
+                                <input id="address" type="text" name="Address" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col hotels">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="laundry">@L("Laundry")</label>
+                            <div class="col-md-4">
+                                <input id="laundry" type="text" name="Laundry" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="foodanddrink">@L("FoodAndDrink")</label>
+                            <div class="col-md-4">
+                                <input id="foodanddrink" type="text" name="FoodAndDrink" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col hotels">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="housekeeping">@L("HouseKeeping")</label>
+                            <div class="col-md-4">
+                                <input id="housekeeping" type="text" name="HouseKeeping" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="gym">@L("Gym")</label>
+                            <div class="col-md-4">
+                                <input id="gym" type="text" name="Gym" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col hotels">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="pool">@L("Pool")</label>
+                            <div class="col-md-4">
+                                <input id="pool" type="text" name="Pool" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="bar">@L("Bar")</label>
+                            <div class="col-md-4">
+                                <input id="bar" type="text" name="Bar" class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col hotels">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="outdoor">@L("Outdoor")</label>
+                            <div class="col-md-4">
+                                <input id="outdoor" type="text" name="Outdoor" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="activities">@L("Activities")</label>
+                            <div class="col-md-4">
+                                <input id="activities" type="text" name="Activities" class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col hotels">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="general">@L("General")</label>
+                            <div class="col-md-4">
+                                <input id="general" type="text" name="General" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="receptionservices">@L("ReceptionServices")</label>
+                            <div class="col-md-4">
+                                <input id="receptionservices" type="text" name="ReceptionServices" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col hotels">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="pets">@L("Pets")</label>
+                            <div class="col-md-4">
+                                <input id="pets" type="text" name="Pets" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="safetyandsecurity">@L("SafetyAndSecurity")</label>
+                            <div class="col-md-4">
+                                <input id="safetyandsecurity" type="text" name="SafetyAndSecurity" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col hotels">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="businessfacilities">@L("BusinessFacilities")</label>
+                            <div class="col-md-4">
+                                <input id="businessfacilities" type="text" name="BusinessFacilities" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="mediaandtechnology">@L("MediaAndTechnology")</label>
+                            <div class="col-md-4">
+                                <input id="mediaandtechnology" type="text" name="MediaAndTechnology" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col hotels">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="conveniences">@L("Conveniences")</label>
+                            <div class="col-md-4">
+                                <input id="conveniences" type="text" name="Conveniences" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="policies">@L("Policies")</label>
+                            <div class="col-md-4">
+                                <input id="policies" type="text" name="Policies" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col hotels">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="contactno">@L("ContactNo")</label>
+                            <div class="col-md-4">
+                                <input id="contactno" type="text" name="ContactNo" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="email">@L("Email")</label>
+                            <div class="col-md-4">
+                                <input id="email" type="text" name="Email" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col hotels">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="totalnoOfrooms">@L("TotalNoOfRooms")</label>
+                            <div class="col-md-4">
+                                <input id="totalnoOfrooms" type="text" name="TotalNoOfRooms" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="description">@L("Description")</label>
+                            <div class="col-md-4">
+                                <input id="description" type="text" name="Description" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col hotels">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="openinghours">@L("OpeningHours")</label>
+                            <div class="col-md-4">
+                                <input id="openinghours" type="date" name="OpeningHours" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col hotels">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="transport">@L("Transport")</label>
+                            <div class="col-md-4">
+                                <input id="transport" type="text" name="Transport" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="accessibility">@L("Accessibility")</label>
+                            <div class="col-md-4">
+                                <input id="accessibility" type="text" name="Accessibility" class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col hotels">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="kitchen">@L("Kitchen")</label>
+                            <div class="col-md-4">
+                                <input id="kitchen" type="text" name="Kitchen" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="languagespoken">@L("LanguageSpoken")</label>
+                            <div class="col-md-4">
+                                <input id="languagespoken" type="text" name="LanguageSpoken" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col cars">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="carname">@L("CarName")</label>
+                            <div class="col-md-4">
+                                <input id="carname" type="text" name="CarName" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="carmodel">@L("CarModel")</label>
+                            <div class="col-md-4">
+                                <input id="carmodel" type="text" name="CarModel" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col cars">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="cartype">@L("CarType")</label>
+                            <div class="col-md-4">
+                                <input id="cartype" type="text" name="CarType" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="carrate">@L("CarRate")</label>
+                            <div class="col-md-4">
+                                <input id="carrate" type="text" name="CarRate" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col cars">
+                        <div class="form-group row ">
+                            <label class="col-md-2 col-form-label" for="carno">@L("CarNo")</label>
+                            <div class="col-md-4">
+                                <input id="carno" type="text" name="CarNo" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="driver">@L("Driver")</label>
+                            <div class="col-md-4">
+                                <input id="driver" type="text" name="Driver" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col cars">
+                        <div class="form-group row blue">
+                            <label class="col-md-2 col-form-label" for="internet">@L("Internet")</label>
+                            <div class="col-md-4">
+                                <input id="internet" type="text" name="Internet" class="form-control">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="contactno">@L("ContactNo")</label>
+                            <div class="col-md-4">
+                                <input id="contactno" type="text" name="ContactNo" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="AttributeTableCreate" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>@L("S#")</th>
+                                    <th>@L("Name")</th>
+                                    <th>@L("Value")</th>
+                                    <th>@L("Action")</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+
+                    </div>
+ 
+                </div>
+
+                @await Html.PartialAsync("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
+            </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    var searchFilter = () => {
+        let selectedType = document.getElementById("filterByType").value;
+        const input = document.querySelector(".form-control");
+        let textBox = input.value;
+        const fields = document.getElementsByClassName("col");
+        for (let i = 0; i < fields.length; i++) {
+            let title = fields[i].querySelector(".form-group");
+            if ((fields[i].classList.contains(selectedType) || selectedType == "")) {
+                fields[i].classList.remove("d-none");
+            } else {
+                fields[i].classList.add("d-none");
+            }
+        }
+    }
+</script>

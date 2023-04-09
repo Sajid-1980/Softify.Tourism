@@ -1,0 +1,249 @@
+﻿@using Softify.Tourism.Web.Models.Services
+@using Softify.Tourism.Web.Models.Common.Modals
+@model EditServiceModalViewModel
+@{
+    Layout = null;
+}
+@await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("EditService")))
+<form name="ServiceEditForm" role="form" class="form-horizontal">
+    <input type="hidden" name="Id" value="@Model.Service.Id" />
+@*    <input type="hidden" name="IsStatic" value="@(Model.Service.IsStatic.ToString())" />
+*@  
+ 
+
+
+        <div class="modal-body">
+            <div class="form-group row required">
+                <label class="col-md-2 col-form-label" for="name">@L("Name")</label>
+                <div class="col-md-4">
+                    <input id="name" type="text" name="Name" class="form-control" value="@Model.Service.Name" required maxlength="32" minlength="2">
+                </div>
+                <label class="col-md-2 col-form-label" for="servicetype">@L("ServiceType")</label>
+                <div class="col-md-4">
+                <select class="form-control" id="servicetype" name="ServiceType" asp-items="ViewBag.ServiceType">
+                       
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="parking">@L("Parking")</label>
+                <div class="col-md-4">
+                    <input id="parking" type="text" name="Parking" value="@Model.Service.Parking" class="form-control">
+                </div>
+                <label class="col-md-2 col-form-label" for="internet">@L("Internet")</label>
+                <div class="col-md-4">
+                    <input id="internet" type="text" name="Internet" value="@Model.Service.Internet" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="kitchen">@L("Kitchen")</label>
+                <div class="col-md-4">
+                    <input id="kitchen" type="text" name="Kitchen" value="@Model.Service.Kitchen" class="form-control">
+                </div>
+                <label class="col-md-2 col-form-label" for="languagespoken">@L("LanguageSpoken")</label>
+                <div class="col-md-4">
+                    <input id="languagespoken" type="text" name="LanguageSpoken" value="@Model.Service.LanguageSpoken" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="livingarea">@L("LivingArea")</label>
+                <div class="col-md-4">
+                    <input id="livingarea" type="text" name="LivingArea" value="@Model.Service.LivingArea" class="form-control">
+                </div>
+                <label class="col-md-2 col-form-label" for="address">@L("Address")</label>
+                <div class="col-md-4">
+                    <input id="address" type="text" name="Address" value="@Model.Service.Address" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="laundry">@L("Laundry")</label>
+                <div class="col-md-4">
+                    <input id="laundry" type="text" name="Laundry" value="@Model.Service.Laundry" class="form-control">
+                </div>
+                <label class="col-md-2 col-form-label" for="foodanddrink">@L("FoodAndDrink")</label>
+                <div class="col-md-4">
+                <input id="foodanddrink" type="text" name="FoodAndDrink" value="@Model.Service.FoodAndDrink" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="housekeeping">@L("HouseKeeping")</label>
+                <div class="col-md-4">
+                    <input id="housekeeping" type="text" name="HouseKeeping"  value="@Model.Service.HouseKeeping" class="form-control">
+                </div>
+                <label class="col-md-2 col-form-label" for="gym">@L("Gym")</label>
+                <div class="col-md-4">
+                    <input id="gym" type="text" name="Gym" class="form-control" value="@Model.Service.Gym">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="pool">@L("Pool")</label>
+                <div class="col-md-4">
+                    <input id="pool" type="text" name="Pool" class="form-control" value="@Model.Service.Pool">
+                </div>
+                <label class="col-md-2 col-form-label" for="bar">@L("Bar")</label>
+                <div class="col-md-4">
+                    <input id="bar" type="text" name="Bar" class="form-control" value="@Model.Service.Bar">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="aTMservice">@L("ATMService")</label>
+                <div class="col-md-4">
+                    <input id="aTMservice" type="text" name="ATMService" class="form-control" value="@Model.Service.ATMService">
+                </div>
+                <label class="col-md-2 col-form-label" for="newpapers">@L("NewPapers")</label>
+                <div class="col-md-4">
+                    <input id="newpapers" type="text" name="NewPapers" class="form-control" value="@Model.Service.NewPapers">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="outdoor">@L("Outdoor")</label>
+                <div class="col-md-4">
+                    <input id="outdoor" type="text" name="Outdoor" class="form-control" value="@Model.Service.Outdoor">
+                </div>
+                <label class="col-md-2 col-form-label" for="activities">@L("Activities")</label>
+                <div class="col-md-4">
+                    <input id="activities" type="text" name="Activities" class="form-control" value="@Model.Service.Activities">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="transport">@L("Transport")</label>
+                <div class="col-md-4">
+                    <input id="transport" type="text" name="Transport" class="form-control" value="@Model.Service.Transport">
+                </div>
+                <label class="col-md-2 col-form-label" for="accessibility">@L("Accessibility")</label>
+                <div class="col-md-4">
+                    <input id="accessibility" type="text" name="Accessibility" class="form-control" value="@Model.Service.Accessibility">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="general">@L("General")</label>
+                <div class="col-md-4">
+                    <input id="general" type="text" name="General" class="form-control" value="@Model.Service.General">
+                </div>
+                <label class="col-md-2 col-form-label" for="receptionservices">@L("ReceptionServices")</label>
+                <div class="col-md-4">
+                    <input id="receptionservices" type="text" name="ReceptionServices" class="form-control" value="@Model.Service.ReceptionServices">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="pets">@L("Pets")</label>
+                <div class="col-md-4">
+                    <input id="pets" type="text" name="Pets" class="form-control" value="@Model.Service.Pets">
+                </div>
+                <label class="col-md-2 col-form-label" for="safetyandsecurity">@L("SafetyAndSecurity")</label>
+                <div class="col-md-4">
+                    <input id="safetyandsecurity" type="text" name="SafetyAndSecurity" class="form-control" value="@Model.Service.SafetyAndSecurity">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="businessfacilities">@L("BusinessFacilities")</label>
+                <div class="col-md-4">
+                    <input id="businessfacilities" type="text" name="BusinessFacilities" class="form-control" value="@Model.Service.BusinessFacilities">
+                </div>
+                <label class="col-md-2 col-form-label" for="mediaandtechnology">@L("MediaAndTechnology")</label>
+                <div class="col-md-4">
+                    <input id="mediaandtechnology" type="text" name="MediaAndTechnology" class="form-control" value="@Model.Service.MediaAndTechnology">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="conveniences">@L("Conveniences")</label>
+                <div class="col-md-4">
+                    <input id="conveniences" type="text" name="Conveniences" class="form-control" value="@Model.Service.Conveniences">
+                </div>
+                <label class="col-md-2 col-form-label" for="policies">@L("Policies")</label>
+                <div class="col-md-4">
+                    <input id="policies" type="text" name="Policies" class="form-control" value="@Model.Service.Policies">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="contactno">@L("ContactNo")</label>
+                <div class="col-md-4">
+                    <input id="contactno" type="text" name="ContactNo" class="form-control" value="@Model.Service.ContactNo">
+                </div>
+                <label class="col-md-2 col-form-label" for="email">@L("Email")</label>
+                <div class="col-md-4">
+                    <input id="email" type="text" name="Email" class="form-control" value="@Model.Service.Email">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="openinghours">@L("OpeningHours")</label>
+                <div class="col-md-4">
+                    <input id="openinghours" type="datetime" name="OpeningHours" class="form-control" value="@Model.Service.OpeningHours">
+                </div>
+            </div>
+
+            @*Floor*@
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="floorname">@L("FloorName")</label>
+                <div class="col-md-4">
+                    <input id="floorname" type="text" name="FloorName" class="form-control" value="@Model.Service.FloorName">
+                </div>
+                <label class="col-md-2 col-form-label" for="floorcode">@L("FloorCode")</label>
+                <div class="col-md-4">
+                    <input id="floorcode" type="text" name="FloorCode" class="form-control" value="@Model.Service.FloorCode">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="totalnoOfrooms">@L("TotalNoOfRooms")</label>
+                <div class="col-md-4">
+                    <input id="totalnoOfrooms" type="text" name="TotalNoOfRooms" class="form-control" value="@Model.Service.TotalNoOfRooms">
+                </div>
+                <label class="col-md-2 col-form-label" for="description">@L("Description")</label>
+                <div class="col-md-4">
+                    <input id="description" type="text" name="Description" class="form-control" value="@Model.Service.Description">
+                </div>
+            </div>
+
+            @*Cars*@
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="carname">@L("CarName")</label>
+                <div class="col-md-4">
+                    <input id="carname" type="text" name="CarName" class="form-control" value="@Model.Service.CarName">
+                </div>
+                <label class="col-md-2 col-form-label" for="carmodel">@L("CarModel")</label>
+                <div class="col-md-4">
+                    <input id="carmodel" type="text" name="CarModel" class="form-control" value="@Model.Service.CarModel">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="cartype">@L("CarType")</label>
+                <div class="col-md-4">
+                    <input id="cartype" type="text" name="CarType" class="form-control" value="@Model.Service.CarType">
+                </div>
+                <label class="col-md-2 col-form-label" for="carrate">@L("CarRate")</label>
+                <div class="col-md-4">
+                    <input id="carrate" type="text" name="CarRate" class="form-control" value="@Model.Service.CarRate">
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-md-2 col-form-label" for="carno">@L("CarNo")</label>
+                <div class="col-md-4">
+                    <input id="carno" type="text" name="CarNo" class="form-control" value="@Model.Service.CarNo">
+                </div>
+                <label class="col-md-2 col-form-label" for="driver">@L("Driver")</label>
+                <div class="col-md-4">
+                    <input id="driver" type="text" name="Driver" class="form-control" value="@Model.Service.Driver">
+                </div>
+            </div>
+            @* <div class="form-group row">
+            <label class="col-md-3 col-form-label">@L("Permissions")</label>
+            <div class="col-md-9">
+            <div class="row">
+            @foreach (var permission in Model.Permissions)
+            {
+            <div class="col-md-6">
+            <input type="checkbox" name="permission" value="@permission.Name" id="permission-@permission.Name" checked="checked" />
+            <label for="permission-@permission.Name">@permission.DisplayName</label>
+            </div>
+            }
+            </div>
+            </div>
+            </div>*@
+        </div>
+       
+      
+    </div>
+    @await Html.PartialAsync("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
+</form>
+
+<script src="~/view-resources/Views/Services/_EditModal.js" asp-append-version="true"></script>

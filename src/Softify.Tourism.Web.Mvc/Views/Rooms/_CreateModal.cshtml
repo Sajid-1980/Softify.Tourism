@@ -1,0 +1,157 @@
+﻿@using Softify.Tourism.Web.Models.Common.Modals
+@model Softify.Tourism.Web.Models.Rooms.EditRoomModalViewModel
+@{
+    Layout = null;
+}
+<div class="modal fade" id="RoomCreateModal" tabindex="-1" role="dialog" aria-labelledby="RoomCreateModalLabel" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            @await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateNewRoom")))
+            <form name="roomCreateForm" role="form" class="form-horizontal">
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label" for="ServicType">@L("ServiceType")</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="ServiceId" type="text" name="ServiceId"   asp-items="ViewBag.ServiceTypeList">
+                                <option>--- Select Service Type ---</option>
+                                </select>
+                        </div>
+                        @*<label class="col-md-2 col-form-label" for="RoomName">@L("RoomName")</label>
+                        <div class="col-md-4">
+                            <input id="RoomName" type="text" name="RoomName" class="form-control" required maxlength="32" minlength="2" />
+                        </div>*@
+                        <label class="col-md-2 col-form-label" for="RoomType">@L("RoomType")</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="roomType" type="text" name="RoomType">
+                                <option>--- Room Type ---</option>
+                                <option value="SingleRoom">Single Room</option>
+                                <option value="DoubleRoom">Double Room</option>
+                                </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label" for="RoomName">@L("RoomName")</label>
+                        <div class="col-md-4">
+                            <input id="RoomName" type="text" name="RoomName" class="form-control"/>
+                        </div>
+                        <label class="col-md-2 col-form-label" for="RoomNo">@L("RoomNo")</label>
+                        <div class="col-md-4">
+                            <select class="form-control" id="roomNo" type="text" name="RoomNo">
+                                <option>--- Room No ---</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label" for="NoOfBed">@L("NoOfBed")</label>
+                        <div class="col-md-4">
+                            <input id="NoOfBed" type="text" name="NoOfBed" class="form-control"/>
+                        </div>
+                        <label class="col-md-2 col-form-label" for="NoOfExtraBed">@L("NoOfExtraBed")</label>
+                        <div class="col-md-4">
+                            <input id="NoOfExtraBed" type="text" name="NoOfExtraBed" class="form-control"/>
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <label class="col-md-2 col-form-label" for="Address">@L("Address")</label>
+                        <div class="col-md-4">
+                            <input id="Address" type="text" name="Address" class="form-control"/>
+                        </div>
+                        <label class="col-md-2 col-form-label" for="RoomDescription">@L("RoomDescription")</label>
+                        <div class="col-md-4">
+                            <input id="RoomDescription" type="text" name="RoomDescription" class="form-control"/>
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <label class="col-md-2 col-form-label" for="NoOfChild">@L("NoOfChild")</label>
+                        <div class="col-md-4">
+                            <input id="NoOfChild" type="text" name="NoOfChild" class="form-control"/>
+                        </div>
+                        <label class="col-md-2 col-form-label" for="NoOfAdult">@L("NoOfAdult")</label>
+                        <div class="col-md-4">
+                            <input id="NoOfAdult" type="text" name="NoOfAdult" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label" for="TotalAdultAllowed">@L("TotalAdultAllowed")</label>
+                        <div class="col-md-4">
+                            <input id="TotalAdultAllowed" type="text" name="TotalAdultAllowed" class="form-control"/>
+                        </div>
+                        <label class="col-md-2 col-form-label" for="TotalChildAllowed">@L("TotalChildAllowed")</label>
+                        <div class="col-md-4">
+                            <input id="TotalChildAllowed" type="text" name="TotalChildAllowed" class="form-control" />
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <label class="col-md-2 col-form-label" for="FirstName">@L("RoomFacility")</label>
+                        <div class="col-md-4">
+                            <input id="RoomFacility" type="text" name="RoomFacility" class="form-control"/>
+                        </div>
+                        <label class="col-md-2 col-form-label" for="ExtraAdultAllowed">@L("ExtraAdultAllowed")</label>
+                        <div class="col-md-4">
+                            <input id="ExtraAdultAllowed" type="text" name="ExtraAdultAllowed" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label" for="ExtraChildrenAllowed">@L("ExtraChildrenAllowed")</label>
+                        <div class="col-md-4">
+                            <input id="ExtraChildrenAllowed" type="text" name="ExtraChildrenAllowed" class="form-control"/>
+                        </div>
+                        <label class="col-md-2 col-form-label" for="RoomRate">@L("RoomRate")</label>
+                        <div class="col-md-4">
+                            <input id="RoomRate" type="text" name="RoomRate" class="form-control"/>
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <label class="col-md-2 col-form-label" for="RoomSize">@L("RoomSize")</label>
+                        <div class="col-md-4">
+                            <input id="RoomSize" type="text" name="RoomSize" class="form-control" />
+                        </div>
+                    </div>
+                   
+
+
+                   @* <div class="form-group row required">
+                        <label class="col-md-3 col-form-label" for="rolename">@L("RoleName")</label>
+                        <div class="col-md-9">
+                            <input id="rolename" type="text" name="Name" class="form-control" required maxlength="32" minlength="2">
+                        </div>
+                    </div>
+                    <div class="form-group row required">
+                        <label class="col-md-3 col-form-label" for="displayname">@L("DisplayName")</label>
+                        <div class="col-md-9">
+                            <input id="displayname" type="text" name="DisplayName" class="form-control" required maxlength="32" minlength="2">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="role-description">@L("RoleDescription")</label>
+                        <div class="col-md-9">
+                            <textarea id="role-description" name="Description" class="form-control"></textarea>
+                        </div>
+                    </div>*@
+                   @* <div class="form-group row">
+                        <label class="col-md-3 col-form-label">@L("Permissions")</label>
+                        <div class="col-md-9">
+                            <div class="row">
+                                @foreach (var permission in Model.Permissions)
+                                {
+                                    <div class="col-md-6">
+                                        <input type="checkbox" name="permission" value="@permission.Name" id="permission-@permission.Name" checked="checked" />
+                                        <label for="permission-@permission.Name">@permission.DisplayName</label>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>*@
+                </div>
+                @await Html.PartialAsync("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
+            </form>
+        </div>
+    </div>
+</div>

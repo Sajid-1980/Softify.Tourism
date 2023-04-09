@@ -1,0 +1,38 @@
+﻿@using Softify.Tourism.Web.Models.Common.Modals
+ @{
+    Layout = null;
+}
+<div class="modal fade" id="AttributesCreateModal" tabindex="-1" role="dialog" aria-labelledby="AttributesCreateModalLabel" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            @await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateNewAttribute")))
+
+            <form name="attributeCreateForm" role="form" class="form-horizontal">
+
+                <div class="modal-body">
+                   
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label" for="AttributeName">@L("Name")</label>
+                        <div class="col-md-4">
+                            <input id="AttributeName" type="text" name="AttributeName" class="form-control" />
+                        </div>
+                        <label class="col-md-2 col-form-label" for="AttributeDescription">@L("Description")</label>
+                        <div class="col-md-4">
+                            <input id="AttributeDescription" type="text" name="AttributeDescription" class="form-control" />
+                        </div>
+                    </div>
+                   
+                </div>
+                    
+
+
+
+                @await Html.PartialAsync("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
+             </form>
+    
+
+       </div> 
+    </div>
+</div>
+
+ 
